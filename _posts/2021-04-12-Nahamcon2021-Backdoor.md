@@ -37,7 +37,7 @@ So this firmware is OpenWrt firmware, cool! While I have never personally used i
 
 # Finding the hash
 
-Now I'll be honest, I started checking Google to see if I could find any other possible spots where OpenWrt might store passwords and came up short. Since I was rapidly running out of time I decided that looking through the files I had was a better idea then searching Google.
+I started checking Google to see if I could find any other possible spots where OpenWrt might store passwords and came up short. Since I was rapidly running out of time I decided that looking through the files I had was a better idea then searching Google.
 
 What I ended up doing was checking directories with `find .` and looking for files that looks interesting. Eventually I ended up in /etc/config and ran a `cat *` and saw the hash. Looking at these files now I missed something incredibly obvious that would have let me solve this in seconds. Let's look back at the root directory listing:
 
