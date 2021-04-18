@@ -29,7 +29,7 @@ Playing HackTheBox has conditioned me to check /home and /root first, but /home 
 
 ![](/images/CTFs/NahamCon2021/Backdoor/passwd_shadow.png)
 
-So we see that an admin account exists but we don't have any passwords here. Continuing to look around /etc I noticed the OS release which I thought might hold some useful information on what we were dealing with.
+So we see that an admin account exists but we don't have any passwords here. Continuing to look around /etc I noticed the os-release file which I thought might hold some useful information on what we were dealing with.
 
 ![](/images/CTFs/NahamCon2021/Backdoor/os_release.png)
 
@@ -39,7 +39,7 @@ So this firmware is OpenWrt firmware, cool! While I have never personally used i
 
 I started checking Google to see if I could find any other possible spots where OpenWrt might store passwords and came up short. Since I was rapidly running out of time I decided that looking through the files I had was a better idea then searching Google.
 
-What I ended up doing was checking directories with `find .` and looking for files that looks interesting. Eventually I ended up in /etc/config and ran a `cat *` and saw the hash. Looking at these files now I missed something incredibly obvious that would have let me solve this in seconds. Let's look back at the root directory listing:
+What I ended up doing was checking directories with `find .` and looking for files that looked interesting. Eventually I ended up in /etc/config and ran a `cat *` and saw the hash. Looking at these files now I noticed I missed something incredibly obvious that would have let me solve this in seconds. Let's look back at the root directory listing:
 
 ![](/images/CTFs/NahamCon2021/Backdoor/squashfs_dir.png)
 
@@ -47,7 +47,7 @@ Notice anything about the modified dates? Why was /etc the only one with a more 
 
 ![](/images/CTFs/NahamCon2021/Backdoor/etc_dir.png)
 
-Well look at that, passwd/shadow were modified on the 4th as well as the config directory. Let's check what was modified in the config directory:
+Well look at that, passwd and shadow were modified on the 4th as well as the config directory. Let's check what was modified in the config directory:
 
 ![](/images/CTFs/NahamCon2021/Backdoor/config_dir.png)
 
@@ -59,7 +59,7 @@ There it is, a password hash.
 
 # Cracking the hash
 
-I figured since I had a hash and not a password that I would need to crack it. I've done enough hash cracking to know that this is mode 500 in hashcat but if you needed a hand to figure that out there are a few options. I generally pull up the `hashcat example_hashes` webpage and compare what I have to what is listed there. Another way is to use hashid which is built into kali. Hashid actually has a `-m` flag that will give you the hashcat mode to use to crack it which is super handy.
+I figured since I had a hash and not a password that I would need to crack it. I've done enough hash cracking to know that this is mode 500 in hashcat but if you needed a hand to figure that out there are a few options. I generally pull up the `hashcat example_hashes` webpage and compare what I have to what is listed there. Another way is to use hashid which is built into Kali. Hashid actually has a `-m` flag that will give you the hashcat mode to use to crack it which is super handy.
 
 ![](/images/CTFs/NahamCon2021/Backdoor/hashid.png)
 
