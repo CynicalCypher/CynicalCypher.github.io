@@ -79,7 +79,7 @@ At this point I'm going to choose `172.30.99.5` to use for our Kali machine and 
 
 Make sure to click save and apply when finished. I could have made the block rule specific to the Kali machine since that will be the only one with an allow to any, but I don't see the harm in making the source any since I don't want anything on this VLAN touching the rest of my network. It is also very important to note that when traffic is being routed it will start at the top of this list and work it's way down until a match is found. That means the order of these rules is very important. If the allow to any was at the top the block rule would never be reached. Conversely if the block rule was at the top we wouldn't have access to anything we made rules for since everything would match the block rule.
 
-### Cisco setup
+## Cisco setup
 
 Now it's time to configure the Cisco switch. I'm obviously using a trunk since all of my VLANs are on the same interface in pfSense so I'll need to add this VLAN to the trunk on the Cisco end. Once we are logged into the switch we can create and configure the VLAN with the following:
 
