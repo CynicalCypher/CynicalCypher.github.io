@@ -1,6 +1,6 @@
 ---
 title:     "Hack The Box - Tenet"
-tags: [HackTheBox,Linux,Medium,CVE,ActiveDirectory]
+tags: [HackTheBox,Linux,Medium]
 layout: post
 categories: HackTheBox-Writeups
 ---
