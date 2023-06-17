@@ -13,5 +13,8 @@ Posted here will be my journey into the Infosec world in the form of write-ups f
 ![](https://www.hackthebox.eu/badge/image/138892)  
 
 
-![](/images/misc/nahamcon2021.jpg)  
+![](/images/misc/nahamcon2023.jpg)
+
+![](/images/misc/nahamcon2021.jpg)
+
 ![](/images/misc/BSidesBOS.jpg)
